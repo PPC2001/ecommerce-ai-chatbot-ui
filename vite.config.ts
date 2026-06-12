@@ -3,6 +3,10 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
+console.log("-----------------------------------------");
+console.log("VITE_API_BASE_URL during build:", process.env.VITE_API_BASE_URL);
+console.log("-----------------------------------------");
+
 export default defineConfig({
   plugins: [
     react(),
