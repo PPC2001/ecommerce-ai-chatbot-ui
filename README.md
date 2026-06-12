@@ -275,7 +275,40 @@ Output in `dist/` — a fully static bundle you can serve from any CDN (Cloud St
 
 ---
 
-## 🚀 Deployment (Firebase Hosting)
+## 🚀 Production Deployment (Vercel)
+
+Deploy your React/Vite application to **Vercel** with the following steps:
+
+1. **Import Project**:
+   - Go to [Vercel Dashboard](https://vercel.com/dashboard) → **Add New...** → **Project**.
+   - Import your **`ecommerce-ai-chatbot-ui`** GitHub repository.
+
+2. **Build Settings**:
+   - **Framework Preset**: `Vite` (Auto-detected).
+   - **Root Directory**: `./` (Auto-selected).
+   - **Build Command**: `npm run build` (Runs type-check and Vite compilation).
+   - **Output Directory**: `dist`.
+
+3. **Configure Environment Variables (CRITICAL)**:
+   - In the **Environment Variables** settings, add the variable pointing to your deployed backend (e.g. Hugging Face Space):
+     - **Key**: `VITE_API_BASE_URL`
+     - **Value**: `https://<your-username>-<your-space-name>.hf.space` *(no trailing slash `/`)*
+     - **Scope**: Ensure the **`Production`** checkbox is selected.
+
+4. **Security & Content Security Policy (CSP)**:
+   - Our `index.html` implements a Content Security Policy. If you deploy your backend to Hugging Face, make sure your [index.html](file:///home/pratik/genai-projects/ecommerce-ai-chatbot/ecommerce-ai-chatbot-ui/index.html) has `https://*.hf.space` in its `connect-src` CSP whitelist:
+     ```html
+     <meta http-equiv="Content-Security-Policy" content="... connect-src 'self' http://localhost:8000 http://127.0.0.1:8000 https://*.hf.space; ...">
+     ```
+     *(This is already pre-configured in the repository)*.
+
+5. **Deploy & Re-deploys**:
+   - Click **Deploy**. Vercel will build and deploy the app.
+   - **Note:** Vite compiles environment variables at **build time**. If you change `VITE_API_BASE_URL` in Vercel settings, you must trigger a **Redeploy** on the Deployments tab to inject the new URL.
+
+---
+
+## 🚀 Deployment (Alternative: Firebase Hosting)
 
 ```bash
 # Build
@@ -304,6 +337,7 @@ server {
     add_header Content-Security-Policy "default-src 'self'; ...";
 }
 ```
+
 
 ---
 
