@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Meta Tags -->
+    <title>ShopBot — AI-Powered E-Commerce Shopping Assistant</title>
+    <meta
+      name="description"
+      content="ShopBot is your intelligent AI shopping assistant powered by Google Gemini. Discover products, get personalized recommendations, and shop smarter."
+    />
+    <meta name="keywords" content="AI shopping assistant, e-commerce chatbot, product recommendations, Gemini AI" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0a0b14" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="ShopBot — AI Shopping Assistant" />
+    <meta property="og:description" content="Get personalized product recommendations from our AI-powered shopping assistant." />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Content Security Policy (meta tag for dev; use HTTP header in production) -->
+    <!-- TODO(security): Move CSP to HTTP response header in production via nginx/CDN -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        script-src 'self';
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+        font-src 'self' https://fonts.gstatic.com;
+        img-src 'self' data: https://images.unsplash.com;
+        connect-src 'self' http://localhost:8000 http://127.0.0.1:8000;
+        frame-ancestors 'none';
+        object-src 'none';
+      "
+    />
+
+    <!-- Anti-clickjacking (redundant with CSP but kept for older browsers) -->
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Google Fonts — loaded via link for SRI compatibility -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
